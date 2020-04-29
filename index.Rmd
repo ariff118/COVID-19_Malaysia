@@ -172,7 +172,7 @@ plotly::plot_ly(data = df_daily) %>%
     marker = list(color = recovered_color)
   ) %>%
   plotly::add_annotations(
-    x = as.Date("2020-02-04"),
+    x = as.Date("2020-01-25"),
     y = 1,
     text = paste("First case"),
     xref = "x",
@@ -185,7 +185,7 @@ plotly::plot_ly(data = df_daily) %>%
     ay = -90
   ) %>%
   plotly::add_annotations(
-    x = as.Date("2020-03-11"),
+    x = as.Date("2020-03-17"),
     y = 3,
     text = paste("First death"),
     xref = "x",
