@@ -1,0 +1,2 @@
+"0","PIQ <- read.table(""https://www.math.wustl.edu/~jmding/math3200/PIQ.txt"", "
+"0","  header=TRUE, sep="""", na.strings=""NA"", dec=""."", strip.white=TRUE)"
