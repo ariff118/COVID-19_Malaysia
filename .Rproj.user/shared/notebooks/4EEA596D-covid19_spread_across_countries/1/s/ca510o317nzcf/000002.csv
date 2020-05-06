@@ -1,0 +1,4 @@
+"0","df <- read_csv(url('https://covid.ourworldindata.org/data/ecdc/full_data.csv'))"
+"2","Error in read_csv(url(""https://covid.ourworldindata.org/data/ecdc/full_data.csv"")) : 
+  could not find function ""read_csv""
+"
