@@ -216,7 +216,7 @@ plotly::plot_ly(data = df_daily) %>%
     x = as.Date("2020-04-01"),
     y = 14,
     text = paste(
-      "2nd Phase Lockdown"
+      "2nd Phase"
     ),
     xref = "x",
     yref = "y",
@@ -229,9 +229,9 @@ plotly::plot_ly(data = df_daily) %>%
   ) %>%
   plotly::add_annotations(
     x = as.Date("2020-04-15"),
-    y = 14,
+    y = 12,
     text = paste(
-      "3rd Phase Lockdown"
+      "3rd Phase (PKP)"
     ),
     xref = "x",
     yref = "y",
@@ -243,10 +243,40 @@ plotly::plot_ly(data = df_daily) %>%
     ay = -90
   ) %>%
   plotly::add_annotations(
-    x = as.Date("2020-04-29"),
-    y = 14,
+    x = as.Date("2020-05-04"),
+    y = 10,
     text = paste(
-      "4th Phase Lockdown"
+      "4th Phase (PKPB)"
+    ),
+    xref = "x",
+    yref = "y",
+    arrowhead = 5,
+    arrowhead = 3,
+    arrowsize = 1,
+    showarrow = TRUE,
+    ax = -10,
+    ay = -90
+  ) %>%
+  plotly::add_annotations(
+    x = as.Date("2020-05-13"),
+    y = 8,
+    text = paste(
+      "5th Phase (PKPB)"
+    ),
+    xref = "x",
+    yref = "y",
+    arrowhead = 5,
+    arrowhead = 3,
+    arrowsize = 1,
+    showarrow = TRUE,
+    ax = -10,
+    ay = -90
+  ) %>%
+  plotly::add_annotations(
+    x = as.Date("2020-06-10"),
+    y = 6,
+    text = paste(
+      "6th Phase (PKPP)"
     ),
     xref = "x",
     yref = "y",
