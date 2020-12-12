@@ -632,7 +632,7 @@ install.packages("devtools")
 devtools::install_github("RamiKrispin/coronavirus")
 ```
 
-The data and dashboard are refreshed on a daily basis.
+The data and dashboard are refreshed on a daily basis at 6PM (Asia/Pacific time).
 
 The raw data is pulled from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus [repository](https://github.com/RamiKrispin/coronavirus-csv){target="_blank"}.
 
