@@ -609,8 +609,46 @@ map_object %>%
 ```
 
 
+Full Data
+=======================================================================
 
+Row {data-height=1000}
+-----------------------------------------------------------------------
+### Full Data by Country  
+```{r}
+df_summary <-coronavirus %>% 
+  # dplyr::filter(country != "Others") %>%
+  dplyr::group_by(country, type) %>%
+  dplyr::summarise(total_cases = sum(cases)) %>%
+  tidyr::pivot_wider(names_from = type, values_from = total_cases) %>%
+  dplyr::arrange(- confirmed) %>%
+  dplyr::filter(confirmed >= 25) %>%
+  dplyr::select(country = country, confirmed, recovered, death) %>%
+  dplyr::mutate(recover_rate = recovered / confirmed,
+         death_rate = death / confirmed)  
+df_summary %>%
+  # head(df_summary,20) %>%
+  DT::datatable(rownames = FALSE,
+            colnames = c("Country", "Confirmed", "Recovered", "Death", "Recovery Rate", "Death Rate"),
+            extensions = 'Buttons',
+            options = list(scrollX=TRUE, scrollY="500px", 
+                           pageLength = 25,
+                           # lengthMenu = c(25,50,75,100),
+                           # pagelength = nrow(50),
+                           searching = TRUE,
+                           # fixedColumns = TRUE, autoWidth = TRUE,
+                           ordering = TRUE, dom = 'Bfrtip',
+                           buttons = c('copy', 'csv', 'excel','pdf'))) %>%
+  DT::formatPercentage("recover_rate", 2) %>%
+  DT::formatPercentage("death_rate", 2) 
+```  
 
+Row {data-height=200}
+-----------------------------------------------------------------------  
+### Note  
+The data is as of `r format(max(coronavirus$date), "%A %B %d, %Y")` and the dashboard has been updated on `r format(Sys.time(), "%A %B %d, %Y")`.  
+
+**To download the data, just click on the preferred formatted button on the top of this page**
 
 About
 =======================================================================
