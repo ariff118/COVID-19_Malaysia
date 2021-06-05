@@ -77,6 +77,17 @@ Summary
 Row {data-width=400}
 -----------------------------------------------------------------------
 
+### Date Updated {.value-box}  
+
+```{r}
+valueBox(
+  value = paste(max(coronavirus$date)),
+  caption = "Date Updated",
+  icon = "fas fa-calendar",
+  color = "black"
+)
+```
+
 ### confirmed {.value-box}
 
 ```{r}
