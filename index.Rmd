@@ -646,7 +646,7 @@ df_summary %>%
   DT::datatable(rownames = FALSE,
             colnames = c("Country", "Confirmed", "Recovered", "Death", "Recovery Rate", "Death Rate"),
             extensions = 'Buttons',
-            options = list(scrollX=TRUE, scrollY="500px",
+            options = list(scrollX=TRUE, scrollY="450px",
                            pageLength = 25,
                            # lengthMenu = c(25,50,75,100),
                            # pagelength = nrow(50),
