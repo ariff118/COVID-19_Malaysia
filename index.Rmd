@@ -5,7 +5,7 @@ output:
   flexdashboard::flex_dashboard:
     orientation: rows
     # social: ["facebook", "twitter", "linkedin"]
-    source_code: embed
+    # source_code: embed
     vertical_layout: fill
 ---
 
@@ -626,9 +626,10 @@ map_object %>%
 Full Data
 =======================================================================
 
-Row {data-height=1000}
------------------------------------------------------------------------
-### Full Data by Country  
+Column {data-width=400}
+-----------------------------------------------------------------------  
+
+### **Full Data by Country**  
 ```{r}
 df_summary <-coronavirus %>%
   # dplyr::filter(country != "Others") %>%
@@ -657,7 +658,37 @@ df_summary %>%
   DT::formatPercentage("death_rate", 2)
 ```  
 
-Row {data-height=200}
+
+### **Full Data on Daily New Death Cases by Country**
+
+```{r}
+daily_confirmed <- coronavirus %>%
+  dplyr::filter(type == "death") %>%
+  dplyr::filter(date >= "2020-02-29") %>%
+  dplyr::mutate(country = country) %>%
+  dplyr::group_by(date, country) %>%
+  dplyr::summarise(total = sum(cases)) %>%
+  dplyr::ungroup() %>%
+  tidyr::pivot_wider(names_from = country, values_from = total)
+
+daily_confirmed %>%
+  # head(df_summary,20) %>%
+  DT::datatable(rownames = FALSE,
+            #colnames = c("Country", "Confirmed", "Recovered", "Death", "Recovery Rate", "Death Rate"),
+            extensions = 'Buttons',
+            options = list(scrollX=TRUE, scrollY="450px",
+                           pageLength = 25,
+                           # lengthMenu = c(25,50,75,100),
+                           # pagelength = nrow(50),
+                           searching = FALSE,
+                           # fixedColumns = TRUE, autoWidth = TRUE,
+                           ordering = TRUE, dom = 'Bfrtip',
+                           buttons = c('copy', 'csv', 'excel','pdf'))
+  )
+```
+          
+
+Row {data-height=50}
 -----------------------------------------------------------------------  
 ### Note  
 The data is as of `r format(max(coronavirus$date), "%A %B %d, %Y")` and the dashboard has been updated on `r format(Sys.time(), "%A %B %d, %Y")`.  
@@ -700,4 +731,4 @@ The data is as of `r format(max(coronavirus$date), "%A %B %d, %Y")` and the dash
 
 
 
-=======
+
